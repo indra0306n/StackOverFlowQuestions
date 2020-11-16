@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <variable
+            name="viewModel"
+            type="com.indra.stackoverflowquestions.viewmodel.RecyclerViewModel" />
+
+        <variable
+            name="itemClick"
+            type="com.indra.stackoverflowquestions.view.adapters.QuestionsListAdapter.IClickListener" />
+    </data>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> itemClick.itemClickAction(viewModel)}"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(viewModel.getQuestionTitle())}"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPostedBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="5dp"
+                android:text="@{`Posted By: `+ Html.fromHtml(viewModel.getCreatedBy())}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Question" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/TxtPostedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="5dp"
+                android:text="@{`Posted Date: `+viewModel.getCreatedDate()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPostedBy" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_Answers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="@id/txtPostedBy"
+                android:text="@{`Answers: ` +viewModel.answersCount}"
+                app:layout_constraintTop_toBottomOf="@+id/TxtPostedDate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

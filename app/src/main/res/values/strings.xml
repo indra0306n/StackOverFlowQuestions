@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Stack Over Flow Questions</string>
+
+    <string name="error_common">Something went wrong, Please try again later</string>
+
+    <string name="no_internet">No Internet Connection</string>
+    <string name="message_no_internet">Please check your internet connection</string>
+    <string name="button_retry">Try Again! </string>
+
+</resources>
